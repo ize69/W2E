@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: where-2-eat
+Version: 0.1.0
+Summary: A tool to see what dinning locations on rit's campus
+Home-page: https://github.com/ize69/W2E
+Author: Isaac Worsencroft
+License: GNU v3.0
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: RIT Students, faculty, and visitors
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
