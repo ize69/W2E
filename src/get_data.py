@@ -1,4 +1,4 @@
-from lib2to3.pgen2.token import NEWLINE
+from asyncio.windows_events import NULL
 from operator import contains, indexOf
 from xml.etree.ElementInclude import include
 from bs4 import BeautifulSoup
@@ -6,7 +6,7 @@ import requests
 from urllib.request import urlopen
 from io import BytesIO
 from array import *
-def main(Local_name):
+def main():
     url = 'https://www.rit.edu/fa/diningservices/places-to-eat/hours'
     source_html = requests.get(url)
     soup = BeautifulSoup(source_html.content,'html.parser')
@@ -80,8 +80,9 @@ def main(Local_name):
                 dinName[currentLocation][2] = ((i.get_text())[temp-6:temp+1]).replace(' ','')
                 dinName[currentLocation][3] = ((i.get_text())[temp+4:len((i.get_text()))-1]).replace(' ','')
             except:
-                print("")
+                NULL
             currentLocation = currentLocation + 1
+    #print(dinName)
     return dinName
 
 #main(5)

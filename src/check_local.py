@@ -2,16 +2,17 @@
 #gracies hours used for testing the time handeling functionality 
 from asyncio.windows_events import NULL
 from datetime import datetime
+from operator import indexOf
 
-testData = ["Gracie's", 0, '7:30am', '10:00am', '11:00am', '4:30pm', '4:30pm', '8:00pm', 0, 0, 0, 0]
 def get_hours(dataSet):
     DataContainer = dataSet
-    print(dataSet[0]) 
+    #print(dataSet[0]) 
     #loop throug posible hours 
     k=0
-    for i in dataSet:
+    for i in DataContainer:
         #checks if collen is present indecating value is a time
         if ":" in str(i):
+            #removes the am/pm and the ":" to make the times in to intagers
             if "pm" in str(i):
                 temp = i
                 temp=(temp).replace(':','')
@@ -25,7 +26,7 @@ def get_hours(dataSet):
                 temp=int(temp)
                 DataContainer[k]=temp
         k+=1
-    print(DataContainer)
+    #print(DataContainer)
     return DataContainer
 def see_if_open(dataSet):
     #get the curent time
@@ -37,8 +38,25 @@ def see_if_open(dataSet):
         if 0 is not i and not (isinstance(i, str)):
             k+=1
             if k%2==1 and i<int(current_time) and i>int(dataSet[k]):
-                    open=True
+                    open=True                  
     return open
+def check_meal(dataSet):   
+    temp=get_hours(dataSet)
+        #get the curent time
+    now = datetime.now()
+    current_time = now.strftime("%H%M")
+    k=0
+    j=0
+    for i in temp:
+
+        if 0 is not i and not (isinstance(i, str)):
+            k+=1
+            if k%2==1 and i<int(current_time) and i>int(temp[k]):
+                index_of_hours = j
+        j+=1 
+    
+    return index_of_hours
 def check_status(testData):
-    return see_if_open(get_hours(testData))
+    temp = get_hours(testData)
+    return see_if_open(temp)
     
